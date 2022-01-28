@@ -10,3 +10,4 @@ $run_dev.*
 ^rsconnect$
 ^\.github$
 ^codecov\.yml$
+^manifest\.json$
