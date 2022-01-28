@@ -1,21 +1,10 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
 # signature
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/ThinkR-open/signature/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/signature/actions)
 <!-- badges: end -->
 

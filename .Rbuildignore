@@ -8,3 +8,4 @@ $run_dev.*
 ^signature\.Rproj$
 ^app\.R$
 ^rsconnect$
+^\.github$
