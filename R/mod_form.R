@@ -96,11 +96,11 @@ mod_form_server <- function(id, global) {
     ns <- session$ns
 
     local <- reactiveValues(
-      twitter_src = "",
-      linkedin_src = "",
-      youtube_src = "",
-      github_src = "",
-      twitch_src = ""
+      twitter_src = "https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/icons/twitter.gif",
+      linkedin_src = "https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/icons/linkedin.png",
+      youtube_src = "https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/icons/youtube.png",
+      github_src = "https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/icons/github.png",
+      twitch_src = "https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/icons/twitch.gif"
     )
 
     observeEvent(NULL, ignoreNULL = FALSE, ignoreInit = FALSE, once = TRUE, {
