@@ -1,0 +1,31 @@
+Package: signature
+Title: Fill your email signature
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Arthur", "Bréant", , "arthur@thinkr.fr", role = c("cre", "aut")),
+    person("ThinkR", role = "cph")
+  )
+Description: Fill your email signature from Thinkr tempalte.
+License: file LICENSE
+URL: https://github.com/ThinkR-open/signature
+BugReports: https://github.com/ThinkR-open/signature/issues
+Imports: 
+    config (>= 0.3.1),
+    glue,
+    golem (>= 0.3.1),
+    shiny (>= 1.7.1),
+    shinyalert,
+    stringr,
+    whereami
+Suggests: 
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+RoxygenNote: 7.1.2
