@@ -39,7 +39,6 @@ golem_add_external_resources <- function() {
     ),
     tags$script(
       src = "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"
-    ),
-    useShinyalert()
+    )
   )
 }
