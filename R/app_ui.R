@@ -10,8 +10,12 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      mod_form_ui("mod_form"),
-      mod_preview_ui("mod_preview")
+      theme = signature_theme(version = 5),
+      tags$div(
+        class = "row",
+        mod_form_ui("mod_form"),
+        mod_preview_ui("mod_preview")
+      )
     )
   )
 }
@@ -40,5 +44,17 @@ golem_add_external_resources <- function() {
     tags$script(
       src = "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"
     )
+  )
+}
+
+#' signature_theme
+#'
+#' @importFrom bslib bs_theme
+#' @param version a Boostrap version to use
+#'
+#' @noRd
+signature_theme <- function(version) {
+  bs_theme(
+    version = version
   )
 }

@@ -9,8 +9,8 @@
 mod_preview_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    column(
-      width = 7,
+    tags$div(
+      class = "col-7",
       h1("Fill the form to create your e-mail signature"),
       tags$div(
         class = "preview",

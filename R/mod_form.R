@@ -9,8 +9,8 @@
 mod_form_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    column(
-      width = 5,
+    tags$div(
+      class = "col-5",
       tags$div(
         class = "form",
         textInput(

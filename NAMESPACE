@@ -2,6 +2,7 @@
 
 export(run_app)
 import(shiny)
+importFrom(bslib,bs_theme)
 importFrom(glue,glue)
 importFrom(golem,activate_js)
 importFrom(golem,add_resource_path)
