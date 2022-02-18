@@ -43,13 +43,135 @@ create_icon("plop.fr", "www/icons/linkedin.png")
 test_that("create_icon works", {
   code <- create_icon("plop.fr", "www/icons/linkedin.png")
   expect_true(inherits(code, "shiny.tag.list"))
-  expect_equal(
-    as.character(code),
-    "<td>\n  <div>\n    <a href=plop.fr dir=\"ltr\" target=\"_blank\">\n      <img\n        src=www/icons/linkedin.png\n        alt=\"\"\n        width=\"28\"\n        height=\"28\"\n        border=\"0\"\n        style=\"display: block\"\n      />\n    </a>\n  </div>\n</td>\n<td width=\"5\"></td>\n"
-  )
+  expect_snapshot(code)
 })
 ```
 
+# Create accordion
+
+See Boostrap documentation for more details:
+https://getbootstrap.com/docs/5.1/components/accordion/
+
+```{r function-accordion}
+#' accordion
+#'
+#' Create an accordion
+#'
+#' @param id id of the accordion for html
+#' @param items a taglist of accordion items
+#'
+#' @return shiny.tag
+#'
+#' @noRd
+accordion <- function(id, items) {
+  tags$div(
+    class = "accordion",
+    id = id,
+    items
+  )
+}
+```
+
+```{r examples-accordion}
+accordion(
+  id = "myaccordion",
+  items = tagList()
+)
+```
+
+```{r tests-accordion}
+test_that("accordion works", {
+  acc <- accordion(id = "myaccordion", items = tagList())
+  expect_true(inherits(acc, "shiny.tag"))
+  expect_snapshot(acc)
+})
+```
+
+# Create accordion item
+
+```{r function-accordion-item}
+#' accordion item
+#'
+#' Create an accordion item
+#'
+#' @param accordion_id id of the accordion
+#' @param item_id id of the accordion item
+#' @param item_header header or title to display
+#' @param open accordion item is open or collasped
+#' @param button_id id of the button
+#' @param ... content to display in the accordion item body
+#'
+#' @return shiny.tag
+#'
+#' @noRd
+accordion_item <- function(accordion_id,
+                           item_id,
+                           item_header,
+                           open,
+                           button_id,
+                           ...) {
+  tags$div(
+    class = "accordion-item",
+    h2(
+      class = "accordion-header",
+      id = item_id,
+      tags$button(
+        class = ifelse(
+          isTRUE(open),
+          "accordion-button",
+          "accordion-button collapsed"
+        ),
+        type = "button",
+        `data-bs-toggle` = "collapse",
+        `data-bs-target` = paste0("#", button_id),
+        `aria-expanded` = ifelse(isTRUE(open), "true", "false"),
+        `aria-controls` = button_id,
+        item_header
+      )
+    ),
+    tags$div(
+      class = ifelse(
+        isTRUE(open),
+        "accordion-collapse collapse show",
+        "accordion-collapse collapse"
+      ),
+      `aria-labelledby` = item_id,
+      `data-bs-parent` = paste0("#", accordion_id),
+      id = button_id,
+      tags$div(
+        class = "accordion-body",
+        ...
+      )
+    )
+  )
+}
+```
+
+```{r examples-accordion-item}
+accordion_item(
+  accordion_id = "accordion",
+  item_id = "accordition-item",
+  item_header = "Title",
+  buttonid = "itemButton",
+  p("This is a text"),
+  p("Inside an accordion item")
+)
+```
+
+```{r tests-accordion-item}
+test_that("accordion_item works", {
+  item <- accordion_item(
+    accordion_id = "accordion",
+    item_id = "accordition-item",
+    item_header = "Title",
+    buttonid = "itemButton",
+    p("This is a text"),
+    p("Inside an accordion item")
+  )
+  expect_true(inherits(item, "shiny.tag"))
+  expect_snapshot(item)
+})
+```
 
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop

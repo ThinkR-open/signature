@@ -52,3 +52,17 @@ label {
 .btn-default i {
   margin-right: 20px;
 }
+
+.accordion h2 {
+  margin-top: 0;
+}
+
+.form {
+  padding: 40px 50px 40px 0;
+}
+
+.accordion-body {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 4% 5%;
+}
