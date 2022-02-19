@@ -10,7 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      theme = signature_theme(version = 5),
+      theme = signature_theme(),
       tags$div(
         class = "row",
         mod_form_ui("mod_form"),
@@ -49,12 +49,19 @@ golem_add_external_resources <- function() {
 
 #' signature_theme
 #'
-#' @importFrom bslib bs_theme
-#' @param version a Boostrap version to use
+#' @importFrom bslib bs_theme bs_add_rules
+#' @importFrom sass sass_file
+#' @importFrom magrittr %>%
 #'
 #' @noRd
-signature_theme <- function(version) {
+signature_theme <- function() {
   bs_theme(
-    version = version
-  )
+    version = 5,
+    primary = "#f15521",
+    secondary = "#14b8d6",
+    dark = "#3c3b41"
+  ) %>%
+    bs_add_rules(
+      sass_file(app_sys("app", "www", "custom.sass"))
+    )
 }
