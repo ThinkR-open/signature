@@ -9,75 +9,101 @@
 mod_form_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    column(
-      width = 5,
+    tags$div(
+      class = "col-5",
       tags$div(
         class = "form",
-        textInput(
-          inputId = ns("firstname"),
-          label = "Your first name",
-          placeholder = "John",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("lastname"),
-          label = "Your last name",
-          placeholder = "Doe",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("jobtitle"),
-          label = "Your job title",
-          placeholder = "Analyst",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("email"),
-          label = "Your email",
-          placeholder = "you@thinkr.fr",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("phone"),
-          label = "Your phone number",
-          value = "+33+(0)+x.xx.xx.xx.xx",
-          placeholder = "+33+(0)+x.xx.xx.xx.xx",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("github"),
-          label = "Github url",
-          value = "https://github.com/ThinkR-open",
-          placeholder = "https://github.com/{you}",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("linkedin"),
-          label = "Linkedin url",
-          value = "https://fr.linkedin.com/company/thinkr-sas",
-          placeholder = "https://www.linkedin.com/in/{you}/",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("twitter"),
-          label = "Twitter url",
-          value = "https://twitter.com/thinkR_fr",
-          placeholder = "https://twitter.com/{you}",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("youtube"),
-          label = "Youtube url",
-          value = "https://www.youtube.com/channel/UCE3OyQLmrQ5tnKc9qDIZbtw",
-          placeholder = "https://www.youtube.com/channel/{you}",
-          width = "80%"
-        ),
-        textInput(
-          inputId = ns("twitch"),
-          label = "Twitch url",
-          value = "https://www.twitch.tv/thinkr_fr",
-          placeholder = "https://www.twitch.tv/{you}",
-          width = "80%"
+        accordion(
+          id = "form-accordion",
+          items = tagList(
+            accordion_item(
+              accordion_id = "form-accordion",
+              item_id = "personnal",
+              item_header = "Personal informations",
+              button_id = "personnalButton",
+              open = TRUE,
+              textInput(
+                inputId = ns("firstname"),
+                label = "Your first name",
+                placeholder = "John",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("lastname"),
+                label = "Your last name",
+                placeholder = "Doe",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("jobtitle"),
+                label = "Your job title",
+                placeholder = "Analyst",
+                width = "100%"
+              )
+            ),
+            accordion_item(
+              accordion_id = "form-accordion",
+              item_id = "professional",
+              item_header = "Professional informations",
+              button_id = "professionalButton",
+              open = FALSE,
+              textInput(
+                inputId = ns("email"),
+                label = "Your email",
+                placeholder = "you@thinkr.fr",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("phone"),
+                label = "Your phone number",
+                value = "+33+(0)+x.xx.xx.xx.xx",
+                placeholder = "+33+(0)+x.xx.xx.xx.xx",
+                width = "100%"
+              )
+            ),
+            accordion_item(
+              accordion_id = "form-accordion",
+              item_id = "social",
+              item_header = "Social informations",
+              button_id = "socialButton",
+              open = FALSE,
+              textInput(
+                inputId = ns("github"),
+                label = "Github",
+                value = "https://github.com/ThinkR-open",
+                placeholder = "https://github.com/{you}",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("linkedin"),
+                label = "Linkedin",
+                value = "https://fr.linkedin.com/company/thinkr-sas",
+                placeholder = "https://www.linkedin.com/in/{you}/",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("twitter"),
+                label = "Twitter",
+                value = "https://twitter.com/thinkR_fr",
+                placeholder = "https://twitter.com/{you}",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("youtube"),
+                label = "Youtube",
+                value = "https://www.youtube.com/channel/UCE3OyQLmrQ5tnKc9qDIZbtw",
+                placeholder = "https://www.youtube.com/channel/{you}",
+                width = "100%"
+              ),
+              textInput(
+                inputId = ns("twitch"),
+                label = "Twitch",
+                value = "https://www.twitch.tv/thinkr_fr",
+                placeholder = "https://www.twitch.tv/{you}",
+                width = "100%"
+              )
+            )
+          )
         )
       )
     )

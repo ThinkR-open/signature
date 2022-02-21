@@ -3,8 +3,5 @@
 test_that("create_icon works", {
   code <- create_icon("plop.fr", "www/icons/linkedin.png")
   expect_true(inherits(code, "shiny.tag.list"))
-  expect_equal(
-    as.character(code),
-    "<td>\n  <div>\n    <a href=plop.fr dir=\"ltr\" target=\"_blank\">\n      <img\n        src=www/icons/linkedin.png\n        alt=\"\"\n        width=\"28\"\n        height=\"28\"\n        border=\"0\"\n        style=\"display: block\"\n      />\n    </a>\n  </div>\n</td>\n<td width=\"5\"></td>\n"
-  )
+  expect_snapshot(code)
 })
