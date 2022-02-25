@@ -37,7 +37,10 @@ You can add a `is_active` param to the item to tell if the item is the active it
 ```{r examples-carousel_item}
 carousel_item(
   is_active = TRUE,
-  img(src = "...")
+  tags$img(src = system.file(
+    "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+    package = "signature"
+  ))
 )
 ```
 
@@ -52,7 +55,10 @@ carousel_indicator(
   id = "indic",
   carousel_item = carousel_item(
     is_active = TRUE,
-    img(src = "...")
+    tags$img(src = system.file(
+      "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+      package = "signature"
+    ))
   ),
   pos = 1
 )
@@ -62,7 +68,7 @@ carousel_indicator(
 
 Finally, you can create a carousel with `carousel()`
 
-A carousel has a `taglist` of `carousel_items`.
+A carousel has a `tagList` of `carousel_items`.
 
 
 ```{r examples-carousel}
@@ -76,11 +82,17 @@ carousel(
   carousel_item = tagList(
     carousel_item(
       is_active = TRUE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     ),
     carousel_item(
       is_active = FALSE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     )
   )
 )

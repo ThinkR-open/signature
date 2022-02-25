@@ -10,11 +10,11 @@ test_that("accordion works", {
     carousel_item = tagList(
       carousel_item(
         is_active = TRUE,
-        img(src = "...")
+        tags$img(src = "...")
       ),
       carousel_item(
         is_active = FALSE,
-        img(src = "...")
+        tags$img(src = "...")
       )
     )
   )

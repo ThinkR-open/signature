@@ -20,8 +20,8 @@
 #'   item_id = "accordition-item",
 #'   item_header = "Title",
 #'   buttonid = "itemButton",
-#'   p("This is a text"),
-#'   p("Inside an accordion item")
+#'   tags$p("This is a text"),
+#'   tags$p("Inside an accordion item")
 #' )
 accordion_item <- function(accordion_id,
                            item_id,
@@ -31,7 +31,7 @@ accordion_item <- function(accordion_id,
                            ...) {
   tags$div(
     class = "accordion-item",
-    h2(
+    tags$h2(
       class = "accordion-header",
       id = item_id,
       tags$button(

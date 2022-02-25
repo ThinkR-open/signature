@@ -5,7 +5,7 @@ test_that("carousel_indicator works", {
     id = "indic",
     carousel_item = carousel_item(
       is_active = TRUE,
-      img(src = "...")
+      tags$img(src = "...")
     ),
     pos = 1
   )

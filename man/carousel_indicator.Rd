@@ -24,7 +24,10 @@ carousel_indicator(
   id = "indic",
   carousel_item = carousel_item(
     is_active = TRUE,
-    img(src = "...")
+    tags$img(src = system.file(
+      "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+      package = "signature"
+    ))
   ),
   pos = 1
 )

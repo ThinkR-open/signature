@@ -31,7 +31,7 @@ accordion_item(
   item_id = "accordition-item",
   item_header = "Title",
   buttonid = "itemButton",
-  p("This is a text"),
-  p("Inside an accordion item")
+  tags$p("This is a text"),
+  tags$p("Inside an accordion item")
 )
 }

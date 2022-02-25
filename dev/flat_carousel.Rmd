@@ -13,6 +13,9 @@ library(purrr)
 
 ```{r development-1}
 pkgload::load_all()
+library(testthat)
+library(shiny)
+library(purrr)
 ```
 
 See Boostrap documentation for more details:
@@ -46,7 +49,10 @@ carousel_item <- function(is_active, ...) {
 ```{r examples-carousel_item}
 carousel_item(
   is_active = TRUE,
-  img(src = "...")
+  tags$img(src = system.file(
+    "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+    package = "signature"
+  ))
 )
 ```
 
@@ -97,7 +103,10 @@ carousel_indicator(
   id = "indic",
   carousel_item = carousel_item(
     is_active = TRUE,
-    img(src = "...")
+    tags$img(src = system.file(
+      "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+      package = "signature"
+    ))
   ),
   pos = 1
 )
@@ -109,7 +118,7 @@ test_that("carousel_indicator works", {
     id = "indic",
     carousel_item = carousel_item(
       is_active = TRUE,
-      img(src = "...")
+      tags$img(src = "...")
     ),
     pos = 1
   )
@@ -122,7 +131,7 @@ test_that("carousel_indicator works", {
 
 Finally, you can create a carousel with `carousel()`
 
-A carousel has a `taglist` of `carousel_items`.
+A carousel has a `tagList` of `carousel_items`.
 
 ```{r function-carousel}
 #' create a carousel
@@ -197,11 +206,17 @@ carousel(
   carousel_item = tagList(
     carousel_item(
       is_active = TRUE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     ),
     carousel_item(
       is_active = FALSE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     )
   )
 )
@@ -218,11 +233,11 @@ test_that("accordion works", {
     carousel_item = tagList(
       carousel_item(
         is_active = TRUE,
-        img(src = "...")
+        tags$img(src = "...")
       ),
       carousel_item(
         is_active = FALSE,
-        img(src = "...")
+        tags$img(src = "...")
       )
     )
   )
@@ -237,7 +252,6 @@ test_that("accordion works", {
 fusen::inflate(
   flat_file = "dev/flat_carousel.Rmd",
   vignette_name = "Create a carousel",
-  open_vignette = FALSE,
   check = FALSE
 )
 ```

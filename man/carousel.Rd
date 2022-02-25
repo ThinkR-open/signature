@@ -28,11 +28,17 @@ carousel(
   carousel_item = tagList(
     carousel_item(
       is_active = TRUE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     ),
     carousel_item(
       is_active = FALSE,
-      img(src = "...")
+      tags$img(src = system.file(
+        "app", "www", "templates", "thinkr", "assets", "logo.jpg",
+        package = "signature"
+      ))
     )
   )
 )

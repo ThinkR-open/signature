@@ -6,7 +6,7 @@
 #' @param src img to use as icon
 #'
 #' @importFrom glue glue
-#' @importFrom shiny HTML
+#' @importFrom htmltools htmlTemplate
 #'
 #' @noRd
 #' @examples

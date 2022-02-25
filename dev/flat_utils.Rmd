@@ -23,7 +23,7 @@ pkgload::load_all()
 #' @param src img to use as icon
 #'
 #' @importFrom glue glue
-#' @importFrom shiny HTML
+#' @importFrom htmltools htmlTemplate
 #'
 #' @noRd
 create_icon <- function(href, src) {
