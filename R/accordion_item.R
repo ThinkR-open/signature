@@ -13,7 +13,7 @@
 #'
 #' @return shiny.tag
 #'
-#' @noRd
+#' @export
 #' @examples
 #' accordion_item(
 #'   accordion_id = "accordion",

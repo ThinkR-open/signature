@@ -14,78 +14,13 @@ library(shiny)
 pkgload::load_all()
 ```
 
-# Create icon
-
-```{r function-my_fun}
-#' create_icon
-#'
-#' @param href url to follow when click
-#' @param src img to use as icon
-#'
-#' @importFrom glue glue
-#' @importFrom shiny HTML
-#'
-#' @noRd
-create_icon <- function(href, src) {
-  htmlTemplate(
-    filename = app_sys("app", "www", "templates", "thinkr", "icon.html"),
-    href = href,
-    src = src
-  )
-}
-```
-
-```{r examples-my_fun}
-create_icon("plop.fr", "www/icons/linkedin.png")
-```
-
-```{r tests-my_fun}
-test_that("create_icon works", {
-  code <- create_icon("plop.fr", "www/icons/linkedin.png")
-  expect_true(inherits(code, "shiny.tag.list"))
-  expect_snapshot(code)
-})
-```
-
-# Create accordion
-
 See Boostrap documentation for more details:
 https://getbootstrap.com/docs/5.1/components/accordion/
 
-```{r function-accordion}
-#' accordion
-#'
-#' Create an accordion
-#'
-#' @param id id of the accordion for html
-#' @param items a taglist of accordion items
-#'
-#' @return shiny.tag
-#'
-#' @noRd
-accordion <- function(id, items) {
-  tags$div(
-    class = "accordion",
-    id = id,
-    items
-  )
-}
-```
+An accordion is a vertically collapsing boxes. 
+An accordion got some accordion items. Each item has is own body.
 
-```{r examples-accordion}
-accordion(
-  id = "myaccordion",
-  items = tagList()
-)
-```
-
-```{r tests-accordion}
-test_that("accordion works", {
-  acc <- accordion(id = "myaccordion", items = tagList())
-  expect_true(inherits(acc, "shiny.tag"))
-  expect_snapshot(acc)
-})
-```
+You can pass whatever you want in the body of the item.
 
 # Create accordion item
 
@@ -103,7 +38,7 @@ test_that("accordion works", {
 #'
 #' @return shiny.tag
 #'
-#' @noRd
+#' @export
 accordion_item <- function(accordion_id,
                            item_id,
                            item_header,
@@ -173,16 +108,76 @@ test_that("accordion_item works", {
 })
 ```
 
+# Create an accordion
+
+Finally you can create your accordion as a `taglist` of `accordion-item`:
+
+```{r function-accordion}
+#' accordion
+#'
+#' Create an accordion
+#'
+#' @param id id of the accordion for html
+#' @param items a taglist of accordion items
+#'
+#' @return shiny.tag
+#'
+#' @export
+accordion <- function(id, items) {
+  tags$div(
+    class = "accordion",
+    id = id,
+    items
+  )
+}
+```
+
+```{r examples-accordion}
+accordion(
+  id = "myaccordion",
+  items = tagList()
+)
+
+accordion(
+  id = "myaccordion",
+  items = tagList(
+    accordion_item(
+      accordion_id = "myaccordion",
+      item_id = "accordition-item1",
+      item_header = "Title 1",
+      buttonid = "itemButton1",
+      p("This is a text"),
+      p("Inside an accordion item")
+    ),
+    accordion_item(
+      accordion_id = "myaccordion",
+      item_id = "accordition-item2",
+      item_header = "Title 2",
+      buttonid = "itemButton2",
+      p("This is a text"),
+      p("Inside an accordion item")
+    )
+  )
+)
+```
+
+```{r tests-accordion}
+test_that("accordion works", {
+  acc <- accordion(id = "myaccordion", items = tagList())
+  expect_true(inherits(acc, "shiny.tag"))
+  expect_snapshot(acc)
+})
+```
+
+
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
 fusen::inflate(
-  flat_file = "dev/flat_additional.Rmd",
-  vignette_name = "Go further",
+  flat_file = "dev/flat_accordion.Rmd",
+  vignette_name = "Create an accordion",
   open_vignette = FALSE,
   check = FALSE
 )
-unlink(here::here("vignettes", "go-further.Rmd"))
-devtools::check()
 ```
 

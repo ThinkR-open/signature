@@ -9,11 +9,33 @@
 #'
 #' @return shiny.tag
 #'
-#' @noRd
+#' @export
 #' @examples
 #' accordion(
 #'   id = "myaccordion",
 #'   items = tagList()
+#' )
+#' 
+#' accordion(
+#'   id = "myaccordion",
+#'   items = tagList(
+#'     accordion_item(
+#'       accordion_id = "myaccordion",
+#'       item_id = "accordition-item1",
+#'       item_header = "Title 1",
+#'       buttonid = "itemButton1",
+#'       p("This is a text"),
+#'       p("Inside an accordion item")
+#'     ),
+#'     accordion_item(
+#'       accordion_id = "myaccordion",
+#'       item_id = "accordition-item2",
+#'       item_header = "Title 2",
+#'       buttonid = "itemButton2",
+#'       p("This is a text"),
+#'       p("Inside an accordion item")
+#'     )
+#'   )
 #' )
 accordion <- function(id, items) {
   tags$div(
