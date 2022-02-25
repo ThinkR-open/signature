@@ -1,0 +1,244 @@
+---
+title: "flat_additional.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(shiny)
+library(purrr)
+```
+
+```{r development-1}
+pkgload::load_all()
+```
+
+See Boostrap documentation for more details:
+https://getbootstrap.com/docs/5.1/components/carousel/
+
+A carousel is a slideshow component for cycling through elements.
+
+A carousel got some carousel items. Each item has is own body, images or text.
+
+# Create carousel item
+
+Inside a carousel item you can add images or text.
+You can add a `is_active` param to the item to tell if the item is the active item (generaly the first item).
+
+```{r function-carousel_item}
+#' create a carousel item
+#'
+#' @param is_active is the carousel item active
+#' @param ... content to display in the carousel body
+#'
+#' @return shiny.tag
+#' @export
+carousel_item <- function(is_active, ...) {
+  tags$div(
+    class = ifelse(isTRUE(is_active), "carousel-item active", "carousel-item"),
+    ...
+  )
+}
+```
+
+```{r examples-carousel_item}
+carousel_item(
+  is_active = TRUE,
+  img(src = "...")
+)
+```
+
+```{r tests-carousel_item}
+test_that("carousel_item works", {
+  item_true <- carousel_item(is_active = TRUE, img(src = "..."))
+  item_false <- carousel_item(is_active = FALSE, img(src = "..."))
+  expect_true(inherits(item_true, "shiny.tag"))
+  expect_snapshot(item_true)
+  expect_snapshot(item_false)
+})
+```
+
+# Create carousel indicator
+
+Inside the carousel, we add indicators to switch between slides.
+Used internal inside `carousel()`
+
+```{r function-carousel_indicator}
+#' create a carousel indicator
+#'
+#' @param id id of the carousel
+#' @param carousel_item carousel_item()
+#' @param pos carousel item position in the taglist
+#'
+#' @importFrom htmltools tagGetAttribute tagAppendAttributes
+#'
+#' @return shiny.tag
+#' @export
+carousel_indicator <- function(id, carousel_item, pos) {
+  button <- tags$button(
+    type = "button",
+    `data-bs-target` = paste0("#", id),
+    `data-bs-slide-to` = pos - 1,
+    `aria-label` = paste0("Slide ", pos)
+  )
+
+  if (tagGetAttribute(carousel_item, "class") == "carousel-item active") {
+    button <- tagAppendAttributes(button, class = "active")
+    button <- tagAppendAttributes(button, `aria-current` = "true")
+  }
+  return(button)
+}
+```
+
+```{r examples-carousel_indicator}
+carousel_indicator(
+  id = "indic",
+  carousel_item = carousel_item(
+    is_active = TRUE,
+    img(src = "...")
+  ),
+  pos = 1
+)
+```
+
+```{r tests-carousel_indicator}
+test_that("carousel_indicator works", {
+  indicator <- carousel_indicator(
+    id = "indic",
+    carousel_item = carousel_item(
+      is_active = TRUE,
+      img(src = "...")
+    ),
+    pos = 1
+  )
+  expect_true(inherits(indicator, "shiny.tag"))
+  expect_snapshot(indicator)
+})
+```
+
+# Create carousel
+
+Finally, you can create a carousel with `carousel()`
+
+A carousel has a `taglist` of `carousel_items`.
+
+```{r function-carousel}
+#' create a carousel
+#'
+#' @param id id of the carousel for html
+#' @param carousel_items a taglist of carousel_item()
+#'
+#' @importFrom purrr map2
+#'
+#' @return shiny.tag
+#'
+#' @export
+carousel <- function(id, carousel_items) {
+  carousel_indicators <- carousel_items %>%
+    map2(
+      seq_along(.),
+      ~ carousel_indicator(id = id, carousel_item = .x, pos = .y)
+    )
+
+  tags$div(
+    id = id,
+    class = "carousel slide",
+    `data-bs-ride` = "carousel",
+    tags$div(
+      class = "carousel-indicators",
+      carousel_indicators
+    ),
+    tags$div(
+      class = "carousel-inner",
+      carousel_items
+    ),
+    tags$button(
+      class = "carousel-control-prev",
+      type = "button",
+      `data-bs-target` = paste0("#", id),
+      `data-bs-slide` = "prev",
+      tags$span(
+        class = "carousel-control-prev-icon",
+        `aria-hidden` = "true"
+      ),
+      tags$span(
+        class = "visually-hidden",
+        "Previous"
+      )
+    ),
+    tags$button(
+      class = "carousel-control-next",
+      type = "button",
+      `data-bs-target` = paste0("#", id),
+      `data-bs-slide` = "next",
+      tags$span(
+        class = "carousel-control-next-icon",
+        `aria-hidden` = "true"
+      ),
+      tags$span(
+        class = "visually-hidden",
+        "Next"
+      )
+    )
+  )
+}
+```
+
+```{r examples-carousel}
+carousel(
+  id = "carouselExample",
+  tagList()
+)
+
+carousel(
+  id = "carouselExampleIndicators",
+  carousel_item = tagList(
+    carousel_item(
+      is_active = TRUE,
+      img(src = "...")
+    ),
+    carousel_item(
+      is_active = FALSE,
+      img(src = "...")
+    )
+  )
+)
+```
+
+```{r tests-carousel}
+test_that("accordion works", {
+  acc <- accordion(id = "myaccordion", items = tagList())
+  expect_true(inherits(acc, "shiny.tag"))
+  expect_snapshot(acc)
+
+  acc2 <- carousel(
+    id = "carouselExampleIndicators",
+    carousel_item = tagList(
+      carousel_item(
+        is_active = TRUE,
+        img(src = "...")
+      ),
+      carousel_item(
+        is_active = FALSE,
+        img(src = "...")
+      )
+    )
+  )
+  expect_true(inherits(acc2, "shiny.tag"))
+  expect_snapshot(acc2)
+})
+```
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(
+  flat_file = "dev/flat_carousel.Rmd",
+  vignette_name = "Create a carousel",
+  open_vignette = FALSE,
+  check = FALSE
+)
+```
+
