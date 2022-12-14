@@ -9,17 +9,17 @@
 mod_preview_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    column(
-      width = 7,
+    tags$div(
+      class = "col-7",
       h1("Fill the form to create your e-mail signature"),
       tags$div(
-        class = "preview",
+        class = "card",
         tags$div(
-          class = "header",
-          p("Preview")
+          class = "card-header bg-dark",
+          "Preview"
         ),
         tags$div(
-          class = "signature",
+          class = "card-body d-flex justify-content-center",
           id = "copy",
           uiOutput(ns("preview"))
         )

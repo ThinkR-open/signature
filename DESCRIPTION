@@ -10,9 +10,12 @@ License: file LICENSE
 URL: https://github.com/ThinkR-open/signature
 BugReports: https://github.com/ThinkR-open/signature/issues
 Imports: 
+    bslib,
     config (>= 0.3.1),
     glue,
     golem (>= 0.3.1),
+    magrittr,
+    sass,
     shiny (>= 1.7.1),
     shinyalert,
     stringr,

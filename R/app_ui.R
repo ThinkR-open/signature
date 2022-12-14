@@ -10,8 +10,12 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      mod_form_ui("mod_form"),
-      mod_preview_ui("mod_preview")
+      theme = signature_theme(),
+      tags$div(
+        class = "row",
+        mod_form_ui("mod_form"),
+        mod_preview_ui("mod_preview")
+      )
     )
   )
 }
@@ -41,4 +45,23 @@ golem_add_external_resources <- function() {
       src = "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"
     )
   )
+}
+
+#' signature_theme
+#'
+#' @importFrom bslib bs_theme bs_add_rules
+#' @importFrom sass sass_file
+#' @importFrom magrittr %>%
+#'
+#' @noRd
+signature_theme <- function() {
+  bs_theme(
+    version = 5,
+    primary = "#f15521",
+    secondary = "#14b8d6",
+    dark = "#3c3b41"
+  ) %>%
+    bs_add_rules(
+      sass_file(app_sys("app", "www", "custom.sass"))
+    )
 }
