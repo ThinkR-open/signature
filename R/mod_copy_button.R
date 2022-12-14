@@ -11,6 +11,7 @@ mod_copy_button_ui <- function(id) {
   tagList(
     actionButton(
       inputId = ns("copy"),
+      class = "btn-secondary",
       icon = icon("google"),
       label = "Copy for Gmail signature",
       `data-clipboard-target` = "#mod_preview-preview",
