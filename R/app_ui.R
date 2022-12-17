@@ -9,10 +9,11 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
+    fixedPage(
       theme = signature_theme(),
+      mod_navbar_ui("mod_navbar"),
       tags$div(
-        class = "row",
+        class = "row g-5",
         mod_form_ui("mod_form"),
         mod_preview_ui("mod_preview")
       )
@@ -51,15 +52,13 @@ golem_add_external_resources <- function() {
 #'
 #' @importFrom bslib bs_theme bs_add_rules
 #' @importFrom sass sass_file
-#' @importFrom magrittr %>%
 #'
 #' @noRd
 signature_theme <- function() {
   bs_theme(
     version = 5,
-    primary = "#f15521",
-    secondary = "#14b8d6",
-    dark = "#3c3b41"
+    primary = "#494955",
+    secondary = "#F15522"
   ) %>%
     bs_add_rules(
       sass_file(app_sys("app", "www", "custom.sass"))

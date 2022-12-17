@@ -1,11 +1,24 @@
-body
-  padding: 3.5em 4.5em 0 4.5em
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap')
 
-h1
-  margin-bottom: 1.75em
+.navbar
+  padding-top: 3em
+  padding-bottom: 2em
+
+  .navbar-brand
+    font-size: 1.5em
+    font-family: 'Sofia', cursive
+    pointer-events: none
+    color: $secondary
+
+.container
+  max-width: 1200px
+
+.card
+  .card-header
+    background: #D8D8D9
 
 .btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active:focus
-  margin-top: 5em
+  margin-bottom: 3em
   color: #ffffff
   font-weight: lighter
   padding: 8px 11px
@@ -18,10 +31,27 @@ h1
   h2
     margin-top: 0
 
-.form
-  padding: 40px 20px 40px 0
+.buttons
+  display: flex
+  grid-gap: 7px
 
-.accordion-body
-  display: grid
-  grid-template-columns: auto auto
-  grid-gap: 4% 5%
+.buttons-default
+  width: 11px
+  height: 11px
+  border-radius: 50%
+  display: inline-block
+
+.close
+  @extend .buttons-default
+  background: #ff5f57
+  border: 1px solid #ff5f57
+
+.minimize
+  @extend .buttons-default
+  background: #febc2e
+  border: 1px solid #febc2e
+
+.zoom
+  @extend .buttons-default
+  background: #27c840
+  border: 1px solid #27c840

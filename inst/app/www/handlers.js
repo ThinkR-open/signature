@@ -1,3 +1,3 @@
 $(function() {
-    new Clipboard('#mod_copy_button-copy');
+    new Clipboard('#mod_form-mod_copy_button-copy');
 });

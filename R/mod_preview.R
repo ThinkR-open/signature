@@ -11,20 +11,32 @@ mod_preview_ui <- function(id) {
   tagList(
     tags$div(
       class = "col-7",
-      h1("Fill the form to create your e-mail signature"),
       tags$div(
         class = "card",
         tags$div(
-          class = "card-header bg-dark",
-          "Preview"
+          class = "card-header",
+          tags$div(
+            class = "buttons",
+            div(class = "close"),
+            div(class = "minimize"),
+            div(class = "zoom")
+          )
         ),
         tags$div(
-          class = "card-body d-flex justify-content-center",
-          id = "copy",
-          uiOutput(ns("preview"))
+          class = "card-body",
+          tags$div(
+            id = "body",
+            p("Hello la team !"),
+            p("Vous pouvez \u00e9diter votre signature depuis cette interface."),
+            p("Il vous restera ensuite \u00e0 suivre les consignes pour l\'ins\u00e9rer en signature."),
+            p("Merci :)")
+          ),
+          tags$div(
+            id = "copy",
+            uiOutput(ns("preview"))
+          )
         )
-      ),
-      mod_copy_button_ui("mod_copy_button")
+      )
     )
   )
 }
@@ -38,7 +50,9 @@ mod_preview_server <- function(id, global) {
 
     output$preview <- renderUI({
       htmlTemplate(
-        filename = app_sys("app", "www", "templates", "thinkr", "template.html"),
+        filename = app_sys(
+          "app", "www", "templates", "thinkr", "template.html"
+        ),
         firstname = global$firstname,
         lastname = global$lastname,
         jobtitle = global$jobtitle,
@@ -54,6 +68,4 @@ mod_preview_server <- function(id, global) {
       )
     })
   })
-
-  mod_copy_button_server("mod_copy_button")
 }
