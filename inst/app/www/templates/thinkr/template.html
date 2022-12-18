@@ -1,126 +1,132 @@
 <html lang="en">
-  <head>
-    <style>
-      body {
-        font-family: "Lato";
-      }
-    </style>
-  </head>
 
-  <body>
-    <hr />
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <table style="margin-bottom: 15px">
-              <tbody>
-                <tr>
-                  <td
-                    style="font-weight: bold; line-height: 1.9; color: #f15522"
-                  >
-                    {{firstname}} {{lastname}}
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 900; line-height: 1">{{jobtitle}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
+<head>
+  <style>
+    body {
+      font-family: "Lato";
+    }
+  </style>
+</head>
+
+<body>
+  <hr />
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <table style="margin-bottom: 15px">
+            <tbody>
+              <tr>
+                <td style="
+                      font-weight: bold;
+                      line-height: 1.9;
+                      color: #f15522;
+                      font-family: Lato, sans-serif;
+                      font-size: 15px;
+                    ">
+                  {{firstname}} {{lastname}}
+                </td>
+              </tr>
+              <tr>
+                <td style="
+                      font-weight: 900;
+                      line-height: 1;
+                      font-family: Lato, sans-serif;
+                      font-size: 14.5px;
+                    ">
+                  {{jobtitle}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://thinkr.fr" dir="ltr" target="_blank">
                     <img
                       src="https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/templates/thinkr/assets/logo.jpg"
-                      alt=""
-                      border="0"
-                    />
-                  </td>
-                  <td width="20"></td>
-                  <td class="separator" width="2" bgcolor="#EAEAEA"></td>
-                  <td width="20"></td>
-                  <td
-                    valign="middle"
-                    style="display: grid; align-items: flex-start"
-                  >
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <a
-                              href="{{phone_url}}"
-                              dir="ltr"
-                              style="
+                      alt="" border="0" />
+                  </a>
+                </td>
+                <td width="20"></td>
+                <td class="separator" width="2" bgcolor="#EAEAEA"></td>
+                <td width="20"></td>
+                <td style="display: grid; align-items: flex-start">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="{{phone_url}}" dir="ltr" style="
                                 text-decoration: none;
                                 color: #aea9af;
                                 font-size: 13px;
-                              "
-                              target="_blank"
-                            >
-                              {{phone}}</a
-                            >
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <a
-                              href="{{email_url}}"
-                              dir="ltr"
-                              style="
+                                font-family: Lato, sans-serif;
+                              " target="_blank">
+                            {{phone}}</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="{{email_url}}" dir="ltr" style="
                                 text-decoration: none;
                                 color: #aea9af;
                                 font-size: 13px;
-                              "
-                              target="_blank"
-                              >{{email}}</a
-                            >
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                                font-family: Lato, sans-serif;
+                              " target="_blank">{{email}}</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td style="
+                              font-family: Lato, sans-serif;
+                              font-size: 14.5px;
+                            ">
+                          Nos services sur&nbsp;<a href="https://rtask.thinkr.fr/fr/" style="color: #f15522"
+                            target="_blank">rtask.thinkr.fr/fr/</a>
+                          <br />
+                          Nos formations sur&nbsp;<a href="https://thinkr.fr/formation-au-logiciel-r/"
+                            style="color: #f15522" target="_blank">thinkr.fr</a><br />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="margin-top: 10px">
                     <table>
                       <tbody>
                         <tr>
-                          <td>
-                            Nos services sur&nbsp;<a
-                              href="https://rtask.thinkr.fr/fr/"
-                              style="color: #f15522"
-                              target="_blank"
-                              >rtask.thinkr.fr/fr/</a
-                            >
-                            <br />
-                            Nos formations sur&nbsp;<a
-                              href="https://thinkr.fr/"
-                              style="color: #f15522"
-                              target="_blank"
-                              >thinkr.fr</a
-                            ><br />
-                          </td>
+                          {{github}} {{twitter}} {{linkedin}} {{youtube}}
+                          {{twitch}}
                         </tr>
                       </tbody>
                     </table>
-                    <div style="margin-top: 10px">
-                      <table>
-                        <tbody>
-                          <tr>
-                            {{github}} {{twitter}} {{linkedin}} {{youtube}}
-                            {{twitch}}
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <object
+                    data="https://raw.githubusercontent.com/ThinkR-open/signature/main/inst/app/www/templates/thinkr/assets/banner.svg"
+                    type="image/svg+xml" style="max-width: 100%; margin-top: 20px;"></object>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
 </html>
