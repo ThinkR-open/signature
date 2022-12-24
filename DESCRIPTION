@@ -17,7 +17,6 @@ Imports:
     magrittr,
     sass,
     shiny (>= 1.7.1),
-    shinyalert,
     stringr,
     whereami
 Suggests: 
