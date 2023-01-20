@@ -53,22 +53,24 @@ test_that("Test module: mod_form Server", {
       "Consultant"
     )
 
+    res_global <- reactiveValuesToList(global)
+    exp_global <-  list(
+      github = NULL,
+      firstname = "Arthur",
+      youtube = NULL,
+      jobtitle = "Consultant",
+      twitter = NULL,
+      linkedin = NULL,
+      email = character(0),
+      phone = NULL,
+      email_url = structure(character(0), class = c("glue", "character")),
+      twitch = NULL,
+      lastname = "Breant",
+      phone_url = structure(character(0), class = c("glue", "character"))
+    )
     expect_equal(
-      reactiveValuesToList(global),
-      list(
-        github = NULL,
-        firstname = "Arthur",
-        youtube = NULL,
-        jobtitle = "Consultant",
-        twitter = NULL,
-        linkedin = NULL,
-        email = character(0),
-        phone = NULL,
-        email_url = structure(character(0), class = c("glue", "character")),
-        twitch = NULL,
-        lastname = "Breant",
-        phone_url = structure(character(0), class = c("glue", "character"))
-      )
+      res_global[order(names(res_global))],
+      exp_global[order(names(exp_global))]
     )
 
     session$setInputs(twitter = "abcd")
