@@ -133,13 +133,12 @@ mod_form_server <- function(id, global) {
     ns <- session$ns
     
     mod_copy_button_server("mod_copy_button")
-    
     local <- reactiveValues()
   
     observeEvent(NULL, ignoreNULL = FALSE, ignoreInit = FALSE, once = TRUE, {
       cat_where(whereami())
 
-      local$github <- "https://raw.githubusercontent.com/ThinkR-open/signature/"
+      local$github <- "https://raw.githubusercontent.com/ThinkR-open/signature"
       local$github_icons <- file.path(
         local$github, "main", "inst", "app", "www", "icons"
       )

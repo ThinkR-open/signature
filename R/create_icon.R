@@ -13,11 +13,13 @@
 #' create_icon("plop.fr", "www/icons/linkedin.png")
 create_icon <- function(href, src) {
   
-  if (href != "") {
-    htmlTemplate(
-      filename = app_sys("app", "www", "templates", "thinkr", "icon.html"),
-      href = href,
-      src = src
-    )  
+  if (!is.null(href)) {
+    if (href != "") {
+      htmlTemplate(
+        filename = app_sys("app", "www", "templates", "thinkr", "icon.html"),
+        href = href,
+        src = src
+      )  
+    } 
   }
 }
