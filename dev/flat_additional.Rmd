@@ -27,11 +27,14 @@ pkgload::load_all()
 #'
 #' @noRd
 create_icon <- function(href, src) {
-  htmlTemplate(
-    filename = app_sys("app", "www", "templates", "thinkr", "icon.html"),
-    href = href,
-    src = src
-  )
+  
+  if (href != "") {
+    htmlTemplate(
+      filename = app_sys("app", "www", "templates", "thinkr", "icon.html"),
+      href = href,
+      src = src
+    )  
+  }
 }
 ```
 
@@ -44,6 +47,8 @@ test_that("create_icon works", {
   code <- create_icon("plop.fr", "www/icons/linkedin.png")
   expect_true(inherits(code, "shiny.tag.list"))
   expect_snapshot(code)
+  
+  expect_null(create_icon("", "www/icons/linkedin.png"))
 })
 ```
 
