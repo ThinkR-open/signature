@@ -131,13 +131,11 @@ mod_form_ui <- function(id) {
 mod_form_server <- function(id, global) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
-
+    
     mod_copy_button_server("mod_copy_button")
-
-    local <- reactiveValues(
-      lang = "fr"
-    )
-
+    
+    local <- reactiveValues()
+  
     observeEvent(NULL, ignoreNULL = FALSE, ignoreInit = FALSE, once = TRUE, {
       cat_where(whereami())
 
@@ -150,24 +148,6 @@ mod_form_server <- function(id, global) {
       local$youtube_src <- file.path(local$github_icons, "youtube.png")
       local$github_src <- file.path(local$github_icons, "github.png")
       local$twitch_src <- file.path(local$github_icons, "twitch.gif")
-    })
-
-    observeEvent(local$lang, {
-      cat_where(whereami())
-
-      if (local$lang == "fr") {
-        global$firstname <- "{{ pr\u00e9nom }}"
-        global$lastname <- "{{ nom }}"
-        global$jobtitle <- "{{ titre du poste }}"
-        global$email <- "{{ email }}"
-        global$phone <- "{{ t\u00e9l\u00e9phone }}"
-      } else {
-        global$firstname <- "{{ firstname }}"
-        global$lastname <- "{{ lastname }}"
-        global$jobtitle <- "{{ jobtitle }}"
-        global$email <- "{{ email }}"
-        global$phone <- "{{ phone }}"
-      }
 
       lapply(
         c(
@@ -184,8 +164,14 @@ mod_form_server <- function(id, global) {
           )
         }
       )
-    })
 
+      global$firstname <- "{{ pr\u00e9nom }}"
+      global$lastname <- "{{ nom }}"
+      global$jobtitle <- "{{ titre du poste }}"
+      global$email <- "{{ email }}"
+      global$phone <- "{{ t\u00e9l\u00e9phone }}"
+    })
+    
     observeEvent(
       c(
         input$firstname,
@@ -199,8 +185,10 @@ mod_form_server <- function(id, global) {
         input$github,
         input$twitch
       ),
-      ignoreInit = TRUE,
+      ignoreInit = TRUE, 
       {
+        cat_where(whereami())
+        
         global$firstname <- str_to_title(input$firstname)
         global$lastname <- str_to_title(input$lastname)
         global$jobtitle <- str_to_title(input$jobtitle)
@@ -212,51 +200,31 @@ mod_form_server <- function(id, global) {
         global$phone_url <- glue("tel:", global$phone)
 
         global$youtube <- input$youtube
+        
+        global$linkedin <- create_icon(
+          href = input$linkedin,
+          src = local$linkedin_src
+        )
 
-        if (!is.null(input$linkedin) & input$linkedin != "") {
-          global$linkedin <- create_icon(
-            href = input$linkedin,
-            src = local$linkedin_src
-          )
-        } else {
-          global$linkedin <- NULL
-        }
+        global$twitter <- create_icon(
+          href = input$twitter,
+          src = local$twitter_src
+        )
 
-        if (!is.null(input$twitter) & input$twitter != "") {
-          global$twitter <- create_icon(
-            href = input$twitter,
-            src = local$twitter_src
-          )
-        } else {
-          global$twitter <- NULL
-        }
+        global$youtube <- create_icon(
+          href = input$youtube,
+          src = local$youtube_src
+        )
 
-        if (!is.null(input$youtube) & input$youtube != "") {
-          global$youtube <- create_icon(
-            href = input$youtube,
-            src = local$youtube_src
-          )
-        } else {
-          global$youtube <- NULL
-        }
+        global$github <- create_icon(
+          href = input$github,
+          src = local$github_src
+        )
 
-        if (!is.null(input$github) & input$github != "") {
-          global$github <- create_icon(
-            href = input$github,
-            src = local$github_src
-          )
-        } else {
-          global$github <- NULL
-        }
-
-        if (!is.null(input$twitch) & input$twitch != "") {
-          global$twitch <- create_icon(
-            href = input$twitch,
-            src = local$twitch_src
-          )
-        } else {
-          global$twitch <- NULL
-        }
+        global$twitch <- create_icon(
+          href = input$twitch,
+          src = local$twitch_src
+        )
       }
     )
   })
