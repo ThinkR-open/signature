@@ -1,19 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<style>
-  h1 {
-    border-bottom: 0px;
-    color: #f2541c;
-  }
-  
-  a {
-    color: #f2541c;
-  }
-  
-  a:hover {
-    color: #f2541c;
-  }
-</style>
 
 # signature <img src="man/figures/logo.png" align="right" height="137" />
 
