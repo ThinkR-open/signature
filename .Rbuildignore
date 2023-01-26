@@ -12,3 +12,4 @@ $run_dev.*
 ^codecov\.yml$
 ^manifest\.json$
 ^index\.html$
+^CODE_OF_CONDUCT\.md$

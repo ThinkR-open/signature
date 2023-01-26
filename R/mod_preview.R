@@ -28,8 +28,8 @@ mod_preview_ui <- function(id) {
             id = "body",
             p("Hello la team !"),
             p("Vous pouvez \u00e9diter votre signature depuis cette interface."),
-            p("Il vous restera ensuite \u00e0 suivre les consignes pour l\'ins\u00e9rer en signature."),
-            p("Merci :)")
+            p("Il vous restera ensuite \u00e0 l\'ins\u00e9rer en signature."),
+            HTML("Merci &#128513"),
           ),
           tags$div(
             id = "copy",
