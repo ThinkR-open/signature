@@ -1,12 +1,12 @@
 Package: signature
 Title: Fill your email signature
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Arthur", "Bréant", , "arthur@thinkr.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1668-0963")),
     person("ThinkR", role = "cph")
   )
-Description: Fill your email signature from Thinkr tempalte.
+Description: Fill in your email signature from Thinkr template.
 License: file LICENSE
 URL: https://github.com/ThinkR-open/signature
 BugReports: https://github.com/ThinkR-open/signature/issues

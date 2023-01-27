@@ -1,4 +1,4 @@
-# signature 0.0.0.9000
+# signature 0.1.0
 
 * Create a new app to easily manage our email signature
 * Add inputs to update the signature
