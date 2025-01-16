@@ -1,20 +1,20 @@
 # signature <img src="logo.png" align="right" height="137" />
 
-## Try locally
+### Try locally
 
 Assets repository for the ThinkR email signature.
 
 Try the different versions of the signature at:
 
-- Python version: todo
+- **Python version**: todo
 
-- R version: <https://signature-r-psi.vercel.app/>
+- **R version**: <https://signature-r-psi.vercel.app/>
 
-- JS version: todo
+- **JS version**: todo
 
-## How to update the signature?
+### How to update the signature?
 
-### The banner
+#### The banner
 
 To update the banner image, replace the `current.png` with a new image with the same name.
 
@@ -22,7 +22,7 @@ To update the banner image, replace the `current.png` with a new image with the 
     #> ├── current_.png
     #> └── team.jpg
 
-### The redirection url
+#### The redirection url
 
 To update the redirection url, modify the `script` inside `index.html` at the root of the package:
 
